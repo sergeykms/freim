@@ -2,15 +2,17 @@
 
 namespace App\Controllers;
 
+use App\Application\Views\View;
+
 class PagesController
 {
     public function home(): void
     {
-        echo '<h2>Home page</h2>';
+        View::renderViews('home');
     }
 
     public function about(): void
     {
-        echo '<h2>About page</h2>';
+        View::renderViews('about');
     }
 }
