@@ -1,0 +1,16 @@
+{
+    "name": "sergey/freim",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "APP\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Sergey Popov",
+            "email": "serpp@me.com"
+        }
+    ],
+    "require": {}
+}
