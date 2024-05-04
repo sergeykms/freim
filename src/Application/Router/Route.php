@@ -4,12 +4,12 @@ namespace App\Application\Router;
 class Route implements RouteInterface
 {
 private static array $routs;
-    public static function page(string $uri, string $controller, string $method): void
+    public static function page(string $uri, string $controller, string $views): void
     {
         self::$routs[] = [
             'uri' => $uri,
             'controller' => $controller,
-            'method' => $method
+            'views' => $views
         ];
     }
 

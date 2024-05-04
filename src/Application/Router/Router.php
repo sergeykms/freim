@@ -2,6 +2,8 @@
 
 namespace App\Application\Router;
 
+use App\Controllers\PagesController;
+
 class Router implements RouterInterface
 {
 
@@ -11,10 +13,11 @@ class Router implements RouterInterface
         foreach ($routes as $route) {
             if ($route['uri'] === $path) {
                 $controller = new $route['controller']();
-                $method = $route['method'];
-                $controller->$method();
-
+                $controller->getViews($route['views']);
+                return;
             }
         }
+        $controller = new PagesController();
+        $controller->getViews('404');
     }
 }
