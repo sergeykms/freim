@@ -11,8 +11,8 @@
 </head>
 <body>
 <div class="container">
-    <div class="alert alert-success mt-3" role="alert">
-        Home page!
+    <div class="alert alert-danger mt-3" role="alert">
+        Error 404! Page not found!
     </div>
 </div>
 </body>

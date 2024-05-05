@@ -6,11 +6,8 @@ use App\Application\Views\View;
 
 class PagesController
 {
-    public function getViews($view): void
+    public function getViews($view, $params = []): void
     {
-        $viewFilePath = __DIR__ . "/../Views/" . $view . ".view.php";
-        if (file_exists($viewFilePath)) {
-            View::renderViews($view);
-        }
+        View::renderViews($view, $params);
     }
 }

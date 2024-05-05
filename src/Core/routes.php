@@ -5,6 +5,15 @@ use App\Controllers\PagesController;
 
 $path =$_SERVER['REQUEST_URI'];
 
-Route::page('/', PagesController::class, 'home');
-Route::page('/home', PagesController::class, 'home');
-Route::page('/about', PagesController::class, 'about');
+// Перечень роутов для обработки представлений
+// uri -> путь из адресной строки
+// PagesController::class -> контроллеер для обработки представления
+// views -> функция в контроллере дял обработки представления
+// params -> массив параметров
+
+Route::page('/', PagesController::class, 'layout', ['page' => 'main']);
+Route::page('/home', PagesController::class, 'layout', ['page' => 'home']);
+Route::page('/about', PagesController::class, 'layout', ['page' => 'about']);
+Route::page('/contacts', PagesController::class, 'layout', ['page' => 'contacts']);
+Route::page('/login', PagesController::class, 'layout', ['page' => 'login']);
+

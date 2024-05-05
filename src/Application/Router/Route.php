@@ -4,12 +4,25 @@ namespace App\Application\Router;
 class Route implements RouteInterface
 {
 private static array $routs;
-    public static function page(string $uri, string $controller, string $views): void
+    public static function page(string $uri, string $controller, string $views, array $params = []): void
     {
         self::$routs[] = [
             'uri' => $uri,
+            'typeRoute' => 'page',
             'controller' => $controller,
-            'views' => $views
+            'views' => $views,
+            'params' => $params,
+        ];
+    }
+
+    public static function actions(string $uri, string $controller, string $actions, array $params): void
+    {
+        self::$routs[] = [
+            'uri' => $uri,
+            'typeRoute' => 'post',
+            'controller' => $controller,
+            'actions' => $actions,
+            'params' => $params,
         ];
     }
 
@@ -17,4 +30,5 @@ private static array $routs;
     {
         return self::$routs;
     }
+
 }
