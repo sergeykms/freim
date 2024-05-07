@@ -6,12 +6,15 @@ use App\Application\Actions\Actions;
 
 class ActionsController
 {
-    public function sendForm($params = ['form' => 'contacts']): void
+    public function sendForm($params = []): void
     {
-        Actions::sendForm($params);
+        $email = $_POST['email'];
+        $message = $_POST['message'];
+        Actions::sendForm(['email' => $email, 'message' => $message]);
+
     }
 
-    public function login($params = ['form' => 'login']): void
+    public function login($params = []): void
     {
         Actions::login($params);
     }

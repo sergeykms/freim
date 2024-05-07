@@ -6,16 +6,14 @@ use App\Controllers\PagesController;
 
 class Router implements RouterInterface
 {
+    use RouterHelpers;
 
     public function route(array $routes): void
     {
-
         $requestMethod = $_SERVER['REQUEST_METHOD'];
         $path = $_SERVER["REQUEST_URI"];
         if ($requestMethod === 'POST') {
-            $actionsRoutes = array_filter($routes, function ($route) {
-                return $route['typeRoute'] === 'post';
-            });
+            $actionsRoutes = self::filterRouters($routes, 'post');
             foreach ($actionsRoutes as $route) {
                 if ($route['uri'] === $path) {
                     $controller = new $route['controller']();
@@ -25,9 +23,7 @@ class Router implements RouterInterface
                 }
             }
         } else {
-            $pagesRoutes = array_filter($routes, function ($route) {
-                return $route['typeRoute'] === 'page';
-            });
+            $pagesRoutes = self::filterRouters($routes, 'page');
             foreach ($pagesRoutes as $route) {
                 if ($route['uri'] === $path) {
                     $controller = new $route['controller']();

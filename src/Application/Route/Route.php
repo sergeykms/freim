@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Application\Router;
+namespace App\Application\Route;
+
 class Route implements RouteInterface
 {
 private static array $routs;

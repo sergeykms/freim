@@ -1,6 +1,6 @@
 <?php
 
-use App\Application\Router\Route;
+use App\Application\Route\Route;
 use App\Controllers\PagesController;
 
 $path =$_SERVER['REQUEST_URI'];
