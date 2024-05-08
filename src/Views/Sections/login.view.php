@@ -1,13 +1,14 @@
 <div class="mt-3 mb-5">
     <form action="/login" method="post" novalidate>
+        <h2>Авторизация</h2>
         <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Логин</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name = "email">
+            <label for="email" class="form-label">Логин (электронная почта)</label>
+            <input type="email" class="form-control" id="email" name = "email">
         </div>
         <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Пароль</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+            <label for="password" class="form-label">Пароль</label>
+            <input type="password" class="form-control" id="password" name="password">
         </div>
-        <button type="submit" class="btn btn-primary">Отправить</button>
+        <button type="submit" class="btn btn-primary">Войти</button>
     </form>
 </div>

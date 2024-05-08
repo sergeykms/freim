@@ -16,4 +16,5 @@ Route::page('/home', PagesController::class, 'layout', ['page' => 'home']);
 Route::page('/about', PagesController::class, 'layout', ['page' => 'about']);
 Route::page('/contacts', PagesController::class, 'layout', ['page' => 'contacts']);
 Route::page('/login', PagesController::class, 'layout', ['page' => 'login']);
+Route::page('/register', PagesController::class, 'layout', ['page' => 'register']);
 

@@ -4,21 +4,18 @@ namespace App\Application\Actions;
 
 use App\Application\Models\Report;
 
-class Actions implements ActionInterface
+class Actions
 {
 
     public static function sendForm(array $params): void
     {
         $report = new Report();
         $params = [
-            'email' => $_POST['email'],
-            'message' => $_POST['message'],
+            'email' => $params['email'],
+            'message' => $params['message'],
         ];
         $report->insertToBD('report', $params);
+        header('Location: /contacts');
     }
 
-    public static function login(array $params): void
-    {
-        print_r($params);
-    }
 }
