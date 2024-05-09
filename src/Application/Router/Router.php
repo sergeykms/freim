@@ -16,8 +16,8 @@ class Router implements RouterInterface
             $actionsRoutes = self::filterRouters($routes, 'post');
             foreach ($actionsRoutes as $route) {
                 if ($route['uri'] === $path) {
-                    $controller = new $route['controller']();
-                    $action = $route['actions'];
+                    $controller = new $route['controller'](); // создание инстанса класс контроллера по статической ссылке, содержащейся в $route
+                    $action = $route['actions']; // вызов метода (экшена) контроллера из $route
                     $controller->$action($_POST);
                     return;
                 }
@@ -26,8 +26,8 @@ class Router implements RouterInterface
             $pagesRoutes = self::filterRouters($routes, 'page');
             foreach ($pagesRoutes as $route) {
                 if ($route['uri'] === $path) {
-                    $controller = new $route['controller']();
-                    $controller->getViews($route['views'], $route['params']);
+                    $controller = new $route['controller'](); // создание инстанса класс контроллера по статической ссылке, содержащейся в $route
+                    $controller->getViews($route['views'], $route['params']); // вызов метода контроллера для отображени view из $route
                     return;
                 }
             }

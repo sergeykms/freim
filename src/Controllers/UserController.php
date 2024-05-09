@@ -6,7 +6,7 @@ use App\Application\Actions\ActionsUser;
 
 class UserController
 {
-    public function registerUser($params = []): void
+    public function registerUser(): void
     {
         $email = $_POST['email'];
         $name = $_POST['name'];
@@ -14,11 +14,11 @@ class UserController
         ActionsUser::registerUser(['email' => $email, 'name' => $name, 'password' => $password]);
     }
 
-    public function loginUser($params = []): void
+    public function loginUser(): void
     {
         $email = $_POST['email'];
-        $message = $_POST['message'];
-        Actions::sendForm(['email' => $email, 'message' => $message]);
+        $password = $_POST['password'];
+        ActionsUser::loginUser(['email' => $email, 'password' => $password]);
     }
 
 }

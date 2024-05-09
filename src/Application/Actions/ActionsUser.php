@@ -8,23 +8,20 @@ class ActionsUser
 {
     public static function loginUser(array $params): void
     {
-//        $report = new User();
-//        $params = [
-//            'email' => $_POST['email'],
-//            'message' => $_POST['message'],
-//        ];
-//        $report->insertToBD('users', $params);
-//        header('Location: /contacts');
+        $user = new User();
+        $findUser = $user->findByField('users', 'email', $params['email']);
+        if (!$findUser) {
+            echo 'Пользователь не найден';
+        } elseif (password_verify($params['password'], $findUser['password'])) {
+        header('Location: /home');
+        } else {
+            echo 'Неверный пароль';
+        }
     }
 
     public static function registerUser(array $params): void
     {
         $user = new User();
-//        $params = [
-//            'email' => $params['email'],
-//            'name' => $params['name'],
-//            'password' => $params['name'],
-//        ];
         $user->insertToBD('users', $params);
         header('Location: /login');
     }
