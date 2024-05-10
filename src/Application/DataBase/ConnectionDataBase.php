@@ -17,12 +17,21 @@ class ConnectionDataBase implements ConnectionDataBaseInterface
 
     public function __construct()
     {
-        $this->driver = 'mysql';
-        $this->host = 'localhost';
-        $this->port = '3306';
-        $this->database = 'freim';
-        $this->userDB = 'root';
-        $this->password = 'root';
+        if ($_SERVER['HTTP_X_REAL_IP'] == '127.0.0.1') {
+            $this->driver = $_ENV['LOCAL_DB_DRIVER'];
+            $this->host = $_ENV['LOCAL_DB_HOST'];
+            $this->port = $_ENV['LOCAL_DB_PORT'];
+            $this->database = $_ENV['LOCAL_DB_DATABASE'];
+            $this->userDB = $_ENV['LOCAL_DB_USER'];
+            $this->password = $_ENV['LOCAL_DB_PASSWORD'];
+        } else {
+            $this->driver = $_ENV['REMOTE_DB_DRIVER'];
+            $this->host = $_ENV['REMOTE_DB_HOST'];
+            $this->port = $_ENV['REMOTE_DB_PORT'];
+            $this->database = $_ENV['REMOTE_DB_DATABASE'];
+            $this->userDB = $_ENV['REMOTE_DB_USER'];
+            $this->password = $_ENV['REMOTE_DB_PASSWORD'];
+        }
     }
 
     public function connect(): PDO
