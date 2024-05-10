@@ -1,5 +1,6 @@
 <?php
 $page = $params['page'] ?? false; // $params приходит из routes
+dump($_COOKIE);
 ?>
 
 <header class="container">
@@ -15,7 +16,7 @@ $page = $params['page'] ?? false; // $params приходит из routes
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link <?= $page === 'home' ? 'active' : '' ?>"
-                        aria-current="page" href="/home">Home</a>
+                           aria-current="page" href="/home">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link <?= $page === 'about' ? 'active' : '' ?>"
@@ -32,6 +33,12 @@ $page = $params['page'] ?? false; // $params приходит из routes
                     <li class="nav-item">
                         <a class="nav-link <?= $page === 'register' ? 'active' : '' ?>"
                            aria-current="page" href="/register">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <form action="/logout" method="post">
+                            <button type="submit" class="btn" style="color: beige">Logout</button>
+                        </form>
+
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"

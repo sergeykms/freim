@@ -12,5 +12,7 @@ use App\Controllers\UserController;
 Route::actions('/sendContacts', ActionsController::class, 'sendForm', []);
 Route::actions('/login', UserController::class, 'loginUser', []);
 Route::actions('/register', UserController::class, 'registerUser', []);
+Route::actions('/logout', UserController::class, 'logoutUser', []);
+
 
 

@@ -3,6 +3,8 @@
 namespace App\Application\Actions;
 
 use App\Application\Models\User;
+use Firebase\JWT\JWT;
+use App\Services\Services;
 
 class ActionsUser
 {
@@ -13,7 +15,22 @@ class ActionsUser
         if (!$findUser) {
             echo 'Пользователь не найден';
         } elseif (password_verify($params['password'], $findUser['password'])) {
-        header('Location: /home');
+            $key = $_ENV['SECRET_KEY_JWT'];
+            $token = JWT::encode(
+                array(
+                    'iat' => time(),
+                    'nbf' => time(),
+                    'exp' => time() + 3600,
+                    'data' => array(
+                        'user_id' => $findUser['id'],
+                        'user_name' => $findUser['name'],
+                    )
+                ),
+                $key,
+                'HS256'
+            );
+            Services::setCookie('jwt', $token);
+            header('Location: /home');
         } else {
             echo 'Неверный пароль';
         }

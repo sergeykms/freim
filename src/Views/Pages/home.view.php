@@ -1,6 +1,7 @@
 <?php
 
 use App\Application\Views\View;
+
 ?>
 
 <main class="container">

@@ -6,7 +6,5 @@ use App\Core\App;
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
-//dump($_SERVER);
-
 App::run();
 

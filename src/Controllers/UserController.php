@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Application\Actions\ActionsUser;
+use App\Services\Services;
 
 class UserController
 {
@@ -21,4 +22,9 @@ class UserController
         ActionsUser::loginUser(['email' => $email, 'password' => $password]);
     }
 
+    public function logoutUser(): void
+    {
+        Services::unsetCookie('jwt');
+        header('Location: /');
+    }
 }
