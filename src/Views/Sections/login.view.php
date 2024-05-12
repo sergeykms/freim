@@ -3,7 +3,7 @@
         <h2>Авторизация</h2>
         <div class="mb-3">
             <label for="email" class="form-label">Логин (электронная почта)</label>
-            <input type="email" class="form-control" id="email" name = "email">
+            <input type="email" class="form-control" id="email" name="email">
         </div>
         <div class="mb-3">
             <label for="password" class="form-label">Пароль</label>

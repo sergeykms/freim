@@ -15,22 +15,11 @@ class ActionsUser
         if (!$findUser) {
             echo 'Пользователь не найден';
         } elseif (password_verify($params['password'], $findUser['password'])) {
-            $key = $_ENV['SECRET_KEY_JWT'];
-            $token = JWT::encode(
-                array(
-                    'iat' => time(),
-                    'nbf' => time(),
-                    'exp' => time() + 3600,
-                    'data' => array(
-                        'user_id' => $findUser['id'],
-                        'user_name' => $findUser['name'],
-                    )
-                ),
-                $key,
-                'HS256'
-            );
+            $token = Services::generateToken($findUser['id'], $findUser['name']);
             Services::setCookie('jwt', $token);
-            header('Location: /home');
+            Services::setCookie('userId', $findUser['id']);
+            Services::setCookie('userName', $findUser['name']);
+            Services::goTo('/home');
         } else {
             echo 'Неверный пароль';
         }
@@ -40,6 +29,6 @@ class ActionsUser
     {
         $user = new User();
         $user->insertToBD('users', $params);
-        header('Location: /login');
+        Services::goTo('/login');
     }
 }

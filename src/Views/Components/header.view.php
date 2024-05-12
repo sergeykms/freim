@@ -1,6 +1,8 @@
 <?php
 $page = $params['page'] ?? false; // $params приходит из routes
-dump($_COOKIE);
+
+$auth = $_COOKIE['jwt'] ?? null;
+
 ?>
 
 <header class="container">
@@ -20,25 +22,15 @@ dump($_COOKIE);
                     </li>
                     <li class="nav-item">
                         <a class="nav-link <?= $page === 'about' ? 'active' : '' ?>"
-                           aria-current="page" href="/about">About</a>
+                           aria-current="page" href="/about">О нас</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link <?= $page === 'contacts' ? 'active' : '' ?>"
-                           aria-current="page" href="/contacts">Contacts</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link <?= $page === 'login' ? 'active' : '' ?>"
-                           aria-current="page" href="/login">Login</a>
+                           aria-current="page" href="/contacts">Контакты</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link <?= $page === 'register' ? 'active' : '' ?>"
                            aria-current="page" href="/register">Register</a>
-                    </li>
-                    <li class="nav-item">
-                        <form action="/logout" method="post">
-                            <button type="submit" class="btn" style="color: beige">Logout</button>
-                        </form>
-
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -58,9 +50,10 @@ dump($_COOKIE);
                         <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
                     </li>
                 </ul>
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                <a href="/login" class="btn btn-outline-success <?php echo $auth ? 'hide_element' : '' ?>">Войти</a>
+                <form class="d-flex" action="/logout" method="post">
+                    <button class="btn btn-outline-success <?php echo !$auth ? 'hide_element' : '' ?>" type="submit">Выйти
+                    </button>
                 </form>
             </div>
         </div>

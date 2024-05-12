@@ -25,6 +25,8 @@ class UserController
     public function logoutUser(): void
     {
         Services::unsetCookie('jwt');
-        header('Location: /');
+        Services::unsetCookie('userId');
+        Services::unsetCookie('userName');
+        Services::goTo('/');
     }
 }
