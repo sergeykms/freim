@@ -3,6 +3,7 @@
 namespace App\Application\Router;
 
 use App\Controllers\PagesController;
+use App\Services\Services;
 
 class Router implements RouterInterface
 {
@@ -27,7 +28,9 @@ class Router implements RouterInterface
             foreach ($pagesRoutes as $route) {
                 if ($route['uri'] === $path) {
                     $controller = new $route['controller'](); // создание инстанса класс контроллера по статической ссылке, содержащейся в $route
-                    $controller->getViews($route['views'], $route['params']); // вызов метода контроллера для отображени view из $route
+                    $auth = Services::isUserChecked();
+                    $params = $route['params'] += ['auth' => $auth]; // добавление к параметрам значения авторизироан ли пользователь
+                    $controller->getViews($route['views'], $params); // вызов метода контроллера для отображени view из $route
                     return;
                 }
             }
