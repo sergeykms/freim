@@ -2,9 +2,11 @@
 
 namespace App\Application\Route;
 
-class Route implements RouteInterface
+class Route
 {
-private static array $routs;
+    private static array $routs;
+
+    // добавление роутов в массив
     public static function page(string $uri, string $controller, string $views, array $params = []): void
     {
         self::$routs[] = [

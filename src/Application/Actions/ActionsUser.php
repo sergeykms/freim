@@ -11,6 +11,7 @@ class ActionsUser
     public static function loginUser(array $params): void
     {
         $user = new User();
+        // поиск пользлваетеля в базе
         $findUser = $user->findByField('users', 'email', $params['email']);
         if (!$findUser) {
             echo 'Пользователь не найден';

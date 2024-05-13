@@ -7,7 +7,7 @@ use AllowDynamicProperties;
 use PDO;
 use PDOException;
 
-class ConnectionDataBase implements ConnectionDataBaseInterface
+class ConnectionDataBase
 {
     private string $driver;
     private string $host;

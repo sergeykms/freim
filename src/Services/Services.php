@@ -37,6 +37,7 @@ class Services
         );
     }
 
+   // проеерка авторизирован ли пользователь. если кука есть и jwt токен действителен
     public static function isUserChecked(): bool
     {
         $userId = $_COOKIE['userId'] ?? null;

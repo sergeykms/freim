@@ -2,7 +2,7 @@
 
 namespace App\Application\Views;
 
-class View implements ViewInterface
+class View
 {
 
     public static function renderViews(string $viewName, $params = []): void

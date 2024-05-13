@@ -5,14 +5,14 @@ namespace App\Application\Router;
 use App\Controllers\PagesController;
 use App\Services\Services;
 
-class Router implements RouterInterface
+class Router
 {
     use RouterHelpers;
 
     public function route(array $routes): void
     {
         $requestMethod = $_SERVER['REQUEST_METHOD'];
-        $path = $_SERVER["REQUEST_URI"];
+        $path = $_SERVER["REQUEST_URI"]; // путь в строке браузера
         if ($requestMethod === 'POST') {
             $actionsRoutes = self::filterRouters($routes, 'post');
             foreach ($actionsRoutes as $route) {
@@ -34,6 +34,7 @@ class Router implements RouterInterface
                     return;
                 }
             }
+            // если роут не найден в массиве
             $controller = new PagesController();
             $controller->getViews('404');
         }

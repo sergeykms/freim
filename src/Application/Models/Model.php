@@ -8,6 +8,7 @@ use PDO;
 class Model extends ConnectionDataBase
 {
 
+    // в $params передаем массив ключ - имя поля в базе, значение - значение в поле базы
     public function insertToBD(string $tableName, array $params): void
     {
         $fields = [];
