@@ -5,6 +5,7 @@ namespace App\Application\DataBase;
 
 use AllowDynamicProperties;
 use PDO;
+use PDOException;
 
 class ConnectionDataBase implements ConnectionDataBaseInterface
 {
@@ -17,7 +18,7 @@ class ConnectionDataBase implements ConnectionDataBaseInterface
 
     public function __construct()
     {
-        if ($_SERVER['HTTP_X_REAL_IP'] == '127.0.0.1') {
+        if ($_SERVER['SERVER_NAME'] == 'freim') {
             $this->driver = $_ENV['LOCAL_DB_DRIVER'];
             $this->host = $_ENV['LOCAL_DB_HOST'];
             $this->port = $_ENV['LOCAL_DB_PORT'];
@@ -37,5 +38,6 @@ class ConnectionDataBase implements ConnectionDataBaseInterface
     public function connect(): PDO
     {
         return new PDO("{$this->driver}:host={$this->host};dbname={$this->database};port={$this->port}", $this->userDB, $this->password);
+
     }
 }
