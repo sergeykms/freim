@@ -18,5 +18,8 @@
             <input type="password" class="form-control" id="confirmPassword" name="confirmPassword">
         </div>
         <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+        <div class="mt-3">
+            <a href="/login">Уже зарегистрированы? Войти</a>
+        </div>
     </form>
 </div>

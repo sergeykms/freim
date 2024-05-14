@@ -21,8 +21,10 @@ $page = $params['page'] ?? '404';
 <!doctype html>
 <html lang="ru">
 <?php View::renderComponents('head'); ?>
-<body class="test1">
-<?php View::renderComponents('header', ['page' => $page]); ?>
+<body>
+<?php //View::renderComponents('header', ['page' => $page]); ?>
+<?php View::renderComponents('header'); ?>
+
 <main class="container">
     <?php View::renderPages($page); ?>
 </main>

@@ -10,5 +10,8 @@
             <input type="password" class="form-control" id="password" name="password">
         </div>
         <button type="submit" class="btn btn-primary">Войти</button>
+        <div class="mt-3">
+            <a href="/register">Еще не зарегистрированы? Зарегистрироваться</a>
+        </div>
     </form>
 </div>
